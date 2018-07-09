@@ -1,0 +1,23 @@
+{
+  "name": "neighborhood-map",
+  "description": "Fourth project for the Udacity Full Stack Web Nanodegree",
+  "main": "app.js",
+  "authors": [
+    "Geocarlos Alves"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "google",
+    "maps",
+    "api"
+  ],
+  "homepage": "https://github.com/geocarlos/neigborhood-map",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
