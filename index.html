@@ -7,25 +7,44 @@
   <title>Bairro São Francisco Area</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/knockout/dist/knockout.js"></script>
 </head>
 
 <body>
+  <header class="header">
+    <nav class="navbar navbar-dark fixed-top bg-dark">
+      <div class="navbar-brand">
+        Bairro São Francisco Area
+        <button class="navbar-toggler" id="panel-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      </div>
+    </nav>
+  </header>
   <div class="container-fluid">
-    <div class="side-panel">
+    <div id="side-panel" class="side-panel">
       <div class="text-center">
-        <h4>Bairro São Francisco Area</h4>
         <h6>Boa Vista, Roraima, Brazil</h6>
       </div>
-      <div class="search" >
+      <div class="search">
         <span>Search for nearby places</span>
         <input class="search-box" id="places-search" type="text" placeholder="Ex: Pizza delivery in NYC">
         <input class="btn btn-primary btn-sm text-right" id="go-places" type="button" value="Go">
       </div>
+      <ul data-bind="foreach: locations" >
+        <li data-bind="text: $data.place"></li>
+      </ul>
     </div>
   </div>
   <div id="map"></div>
   </div>
   <script src="js/map.js"></script>
+  <script src="js/default_data/locations.js"></script>
+  <script src="js/models/location.js"></script>
+  <script src="js/view_model/view_model.js"></script>
   <script src="js/app.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyBZsbMUm9vj6GQrYRRl9QxMrA-n7V68Dag&callback=initMap"></script>
 </body>
