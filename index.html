@@ -14,32 +14,33 @@
 </head>
 
 <body>
-  <header class="header">
-    <nav class="navbar navbar-dark fixed-top bg-dark">
-      <div class="navbar-brand">
-        Bairro São Francisco Area
-        <button class="navbar-toggler" id="panel-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      </div>
-    </nav>
-  </header>
   <div class="container-fluid">
     <div id="side-panel" class="side-panel">
       <div class="text-center">
+        <h4>Bairro São Francisco Area</h4>
         <h6>Boa Vista, Roraima, Brazil</h6>
       </div>
       <div class="search">
         <span>Search for nearby places</span>
-        <input class="search-box" id="places-search" type="text" placeholder="Ex: Pizza delivery in NYC">
+        <input class="search-box" id="places-search" type="text" placeholder="Ex: Restaurants in Boa Vista, RR">
         <input class="btn btn-primary btn-sm text-right" id="go-places" type="button" value="Go">
       </div>
-      <ul data-bind="foreach: locations" >
-        <li data-bind="text: $data.place"></li>
-      </ul>
+      <div class="location-list">
+        <ul data-bind="foreach: locations" >
+          <li data-bind="text: $data.place"></li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <div id="map"></div>
+    <div class="map-area" id='map-area'>
+      <nav class="navbar navbar-dark fixed-top bg-dark" data-bind="style: {marginLeft: menuToggle() ? '320px' : '0px'}" >
+        <div class="navbar-brand">
+          <button data-bind='click: toggleMenu' class="navbar-toggler" id="panel-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+      </nav>
+      <div id="map" data-bind="style: {left: menuToggle() ? '320px' : '0px'}" ></div>
+    </div>
   </div>
   <script src="js/map.js"></script>
   <script src="js/default_data/locations.js"></script>

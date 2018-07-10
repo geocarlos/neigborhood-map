@@ -19,7 +19,12 @@ input {
 }
 
 .navbar-toggler{
-  margin-left: 2em;
+  margin-left: 0.5em;
+}
+
+ul{
+  list-style: none;
+  padding: 0px;
 }
 
 /* Map Area */
@@ -33,12 +38,13 @@ hr {
   height: 1px;
   margin: 20px 0 20px 0;
   border: none;
+  z-index: -1;
 }
 
 #map {
   bottom: 0px;
   height: 100%;
-  left: 22%;
+  left: 0;
   position: absolute;
   right: 0px;
 }
@@ -52,14 +58,13 @@ hr {
 
 .side-panel {
   background: #fff;
-  /* border: 1px solid #999; */
   border-radius: 3px;
   height: 100%;
   line-height: 35px;
   padding: 10px 10px 30px 10px;
   text-align: left;
-  width: 22%;
-  margin-top: 3em;
+  max-width: 300px;
+  margin-top: 1em;
 }
 
 .seartch{
@@ -67,36 +72,4 @@ hr {
 }
 .search-box {
   width: 80%;
-}
-
-.hidden{
-  display: none;
-}
-
-@media screen and (min-width: 800px) and (max-width: 1279px){
-  .search-box {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 800px){
-  .side-panel{
-    position: relative;
-    font-size: .7em;
-    height: 25%;
-    width: 100%;
-    margin: 0px;
-    padding: 1em;
-    top: 75%;
-  }
-  #map {
-    bottom: 25%;
-    height: 75%;
-    left: 0px;
-    position: absolute;
-    right: 0px;
-  }
-  .search-box {
-    width: 100%;
-  }
 }
