@@ -9,8 +9,8 @@ const locations = [
     lng: -60.675561
   }, {
     place: 'Claretiano Colégio',
-    lat: 2.819294,
-    lng: -60.703519
+    lat: 2.829214,
+    lng: -60.671615
   }, {
     place: 'Senac Roraima',
     lat: 2.827467,
@@ -23,5 +23,9 @@ const locations = [
     place: 'Recanto da Peixada',
     lat: 2.828874,
     lng: -60.674624
+  },{
+    place: 'Tulipa Restaurante',
+    lat: 2.828532,
+    lng: -60.672225
   }
 ]
