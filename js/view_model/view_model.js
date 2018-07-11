@@ -12,5 +12,6 @@ class ViewModel {
   */
   toggleMenu() {
     this.menuToggle(!this.menuToggle());
+    // alert(this.menuToggle())
   }
 }

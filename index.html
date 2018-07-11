@@ -15,31 +15,36 @@
 
 <body>
   <div class="container-fluid">
-    <div id="side-panel" class="side-panel">
+    <div id="side-panel" class="side-panel" data-bind="style: {transform: menuToggle() ? 'translate(-320px, 0)' : 'translate(0, 0)'}">
       <div class="text-center">
         <h4>Bairro São Francisco Area</h4>
         <h6>Boa Vista, Roraima, Brazil</h6>
       </div>
       <div class="search">
         <span>Search for nearby places</span>
-        <input class="search-box" id="places-search" type="text" placeholder="Ex: Restaurants in Boa Vista, RR">
-        <input class="btn btn-primary btn-sm text-right" id="go-places" type="button" value="Go">
+        <form class="form-inline my-2 my-lg-0">
+          <input id="places-search" class="form-control mr-sm-2 search-box" type="text" placeholder="Ex: Restaurants in Boa Vista, RR" title="Search places in São Francisco area">
+          <button id="go-places" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Go</button>
+        </form>
       </div>
       <div class="location-list">
-        <ul data-bind="foreach: locations" >
+        <ul data-bind="foreach: locations">
           <li data-bind="text: $data.place"></li>
         </ul>
       </div>
     </div>
     <div class="map-area" id='map-area'>
-      <nav class="navbar navbar-dark fixed-top bg-dark" data-bind="style: {marginLeft: menuToggle() ? '320px' : '0px'}" >
+      <nav class="navbar navbar-dark fixed-top bg-dark"  data-bind="style: {transform: menuToggle() ? 'translate(0, 0)' : 'translate(320px, 0)'}">
         <div class="navbar-brand">
           <button data-bind='click: toggleMenu' class="navbar-toggler" id="panel-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         </div>
+        <div class="navbar-brand">
+          <h4>São Francisco</h4>
+        </div>
       </nav>
-      <div id="map" data-bind="style: {left: menuToggle() ? '320px' : '0px'}" ></div>
+      <div id="map" data-bind="style: {transform: menuToggle() ? 'translate(0, 0)' : 'translate(320px, 0)'}"></div>
     </div>
   </div>
   <script src="js/map.js"></script>

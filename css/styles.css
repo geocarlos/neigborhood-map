@@ -7,19 +7,21 @@ html, body {
 
 .container-fluid {
   height: 100%;
-  position: relative;
+  padding-left: 0 !important;
 }
 
 input {
   font-size: 12px;
 }
 
-.header nav{
-  height: 3em;
-}
-
 .navbar-toggler{
   margin-left: 0.5em;
+}
+
+nav{
+  float: right !important;
+  transform: translate(320px, 0);
+  transition: transform .5s ease;
 }
 
 ul{
@@ -38,7 +40,6 @@ hr {
   height: 1px;
   margin: 20px 0 20px 0;
   border: none;
-  z-index: -1;
 }
 
 #map {
@@ -47,6 +48,8 @@ hr {
   left: 0;
   position: absolute;
   right: 0px;
+  transform: translate(320px, 0);
+  transition: transform .5s ease;
 }
 
 #pano {
@@ -57,19 +60,19 @@ hr {
 /* Left Panel Area */
 
 .side-panel {
-  background: #fff;
-  border-radius: 3px;
+  background: #333;
+  color: #efefef;
   height: 100%;
   line-height: 35px;
-  padding: 10px 10px 30px 10px;
   text-align: left;
-  max-width: 300px;
-  margin-top: 1em;
+  min-width: 320px;
+  max-width: 330px;
+  padding: 1em;
+  position: absolute;
+  transform: translate(-330px, 0);
+  transition: transform .5s ease;
 }
 
-.seartch{
-  width: 100%;
-}
 .search-box {
-  width: 80%;
+  width: 75%;
 }
