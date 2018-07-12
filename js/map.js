@@ -1,6 +1,9 @@
-function initMap(){
+function initMap() {
   const map = new google.maps.Map(document.querySelector('#map'), {
-    center: {lat: 2.833292, lng: -60.677004},
+    center: {
+      lat: 2.833292,
+      lng: -60.677004
+    },
     zoom: 8
   });
 
@@ -14,9 +17,12 @@ function initMap(){
     Loop through the array 'locations', from ./default_data/locations.js and
     create markers that will show by default, populating the markers array.
   */
-  for(loc of locations){
+  for (loc of locations) {
     const marker = new google.maps.Marker({
-      position: {lat: loc.lat, lng: loc.lng},
+      position: {
+        lat: loc.lat,
+        lng: loc.lng
+      },
       map: map,
       title: loc.place,
       animation: google.maps.Animation.DROP
@@ -26,21 +32,20 @@ function initMap(){
 
     bounds.extend(marker.position);
 
-    marker.addListener('click', ()=>{
+    marker.addListener('click', () => {
       populateInfoWindow(marker, infoWindow, map);
     });
   }
   map.fitBounds(bounds);
 }
 
-function populateInfoWindow(marker, infoWindow, map){
-  if(infoWindow.marker != marker){
+function populateInfoWindow(marker, infoWindow, map) {
+  if (infoWindow.marker !== marker) {
     infoWindow.marker = marker;
     infoWindow.setContent('<div>' + marker.title + '</div>');
     infoWindow.open(map, marker);
-    infoWindow.addListener('closeclick', ()=>{
+    infoWindow.addListener('closeclick', () => {
       infoWindow.marker = null;
     });
   }
-  return;
 }
