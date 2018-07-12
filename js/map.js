@@ -93,14 +93,23 @@ function filterMarkers() {
 }
 
 function selectMarker(location) {
+
   if (!map) {
     return;
   }
+
   for (let marker of Object.keys(markers)) {
     if (markers[marker].getAnimation()) {
       markers[marker].setAnimation(null)
     }
   }
+
+  // Select location on list view
+  const loc = viewModel.filteredLocations().filter((l)=>{
+    return l.place() === location;
+  })[0];
+  viewModel.selectLocation(loc);
+
   markers[location].setAnimation(google.maps.Animation.BOUNCE);
   setTimeout(()=>{
     markers[location].setAnimation(null);
