@@ -76,3 +76,8 @@ hr {
 .search-box {
   width: 75%;
 }
+
+.place-name:hover{
+  cursor: pointer;
+  color: lightblue;
+}

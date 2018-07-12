@@ -1,13 +1,13 @@
-const markers = [];
+const markers = {};
 let map = null;
+const center = {
+  lat: 2.833292,
+  lng: -60.677004
+}
 
 function initMap() {
-  map = new google.maps.Map(document.querySelector('#map'), {
-    center: {
-      lat: 2.833292,
-      lng: -60.677004
-    }
-  });
+  console.log('LOAD MAP');
+  map = new google.maps.Map(document.querySelector('#map'), {center: center});
 
   const infoWindow = new google.maps.InfoWindow();
 
@@ -17,7 +17,7 @@ function initMap() {
     Loop through the array 'locations', from ./default_data/locations.js and
     create markers that will show by default, populating the markers array.
   */
-  for (loc of viewModel.locations()) {
+  for (let loc of viewModel.locations()) {
     const marker = new google.maps.Marker({
       position: {
         lat: loc.lat(),
@@ -28,7 +28,9 @@ function initMap() {
       animation: google.maps.Animation.DROP
     })
 
-    markers.push(marker);
+    // const place = {};
+    markers[marker.title] = marker;
+    // markers.push(place);
 
     bounds.extend(marker.position);
 
@@ -44,7 +46,9 @@ function initMap() {
     }
   });
 
-  setTimeout(function(){google.maps.event.removeListener(zoomListener)}, 2000);
+  setTimeout(function() {
+    google.maps.event.removeListener(zoomListener)
+  }, 2000);
 }
 
 function populateInfoWindow(marker, infoWindow, map) {
@@ -58,24 +62,47 @@ function populateInfoWindow(marker, infoWindow, map) {
   }
 }
 
+
+/**
+  This function is designed in a way that when the users types in the input
+  field, markers won't be blinking, what would happen if I turned all the
+  markers map attributes to null and then set back the map only for those
+  that match the filtered array provided by Knockout viewModel.
+*/
 function filterMarkers() {
   if (!map) {
     return;
   }
 
-  for (marker of markers) {
-    if (marker.map) {
-      marker.setMap(null);
+  const locations = viewModel.filteredLocations();
+  const locs = [];
+
+  for (let loc of locations) {
+    locs.push(loc.place());
+
+    // Set map only if it is not set.
+    if(!markers[loc.place()].map){
+      markers[loc.place()].setMap(map);
     }
   }
 
-  for (loc of viewModel.filteredLocations()) {
-    for (marker of markers) {
-      if (marker.title === loc.place()) {
-        marker.setMap(map);
-      }
+  for (let marker of Object.keys(markers)) {
+
+    // Hide markers that do not match the filtered array.
+    if (!locs.includes(marker)) {
+      markers[marker].setMap(null)
     }
   }
+}
 
-  map.fitBounds(bounds);
+function selectMarker(location) {
+  if (!map) {
+    return;
+  }
+  for (let marker of Object.keys(markers)) {
+    if (markers[marker].getAnimation()) {
+      markers[marker].setAnimation(null)
+    }
+  }
+  markers[location].setAnimation(google.maps.Animation.BOUNCE);
 }

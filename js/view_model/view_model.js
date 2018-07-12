@@ -28,4 +28,11 @@ class ViewModel {
   toggleMenu() {
     this.menuToggle(!this.menuToggle());
   }
+
+  /**
+    Filter markers on the map
+  */
+  filterMarkers(mapFunction){
+    mapFuntion();
+  }
 }
