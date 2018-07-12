@@ -28,14 +28,13 @@ function initMap() {
       animation: google.maps.Animation.DROP
     })
 
-    // const place = {};
     markers[marker.title] = marker;
-    // markers.push(place);
 
     bounds.extend(marker.position);
 
     marker.addListener('click', () => {
       populateInfoWindow(marker, infoWindow, map);
+      selectMarker(marker.title);
     });
   }
   map.fitBounds(bounds);
@@ -79,7 +78,6 @@ function filterMarkers() {
 
   for (let loc of locations) {
     locs.push(loc.place());
-
     // Set map only if it is not set.
     if(!markers[loc.place()].map){
       markers[loc.place()].setMap(map);
@@ -87,7 +85,6 @@ function filterMarkers() {
   }
 
   for (let marker of Object.keys(markers)) {
-
     // Hide markers that do not match the filtered array.
     if (!locs.includes(marker)) {
       markers[marker].setMap(null)
@@ -105,4 +102,7 @@ function selectMarker(location) {
     }
   }
   markers[location].setAnimation(google.maps.Animation.BOUNCE);
+  setTimeout(()=>{
+    markers[location].setAnimation(null);
+  }, 1500)
 }

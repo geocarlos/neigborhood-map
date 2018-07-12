@@ -30,9 +30,12 @@ class ViewModel {
   }
 
   /**
-    Filter markers on the map
+    Select loation on the list view.
   */
-  filterMarkers(mapFunction){
-    mapFuntion();
+  selectLocation(location){
+    for(let loc of this.filteredLocations()){
+      loc.selected(false);
+    }
+    location.selected(true);
   }
 }
