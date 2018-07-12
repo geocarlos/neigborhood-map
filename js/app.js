@@ -1,7 +1,7 @@
-function _init(){
+const viewModel = new ViewModel();
 
-    ko.applyBindings(new ViewModel());
-
+function _init() {
+  ko.applyBindings(viewModel);
 }
 
 window.onload = _init()

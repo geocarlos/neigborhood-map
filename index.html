@@ -23,7 +23,7 @@
       <div class="search">
         <span>Search for nearby places</span>
         <form class="form-inline my-2 my-lg-0">
-          <input id="places-search" class="form-control mr-sm-2 search-box" type="text" data-bind="textInput: locationFilter" placeholder="Ex: Restaurants in Boa Vista, RR" title="Search places in São Francisco area">
+          <input id="places-search" class="form-control mr-sm-2 search-box" type="text" data-bind="textInput: locationFilter" placeholder="Ex: Restaurants in Boa Vista, RR" title="Search places in São Francisco area" onkeyup="filterMarkers();">
           <button id="go-places" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Go</button>
         </form>
       </div>

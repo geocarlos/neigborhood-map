@@ -1,13 +1,13 @@
+const markers = [];
+let map = null;
+
 function initMap() {
-  const map = new google.maps.Map(document.querySelector('#map'), {
+  map = new google.maps.Map(document.querySelector('#map'), {
     center: {
       lat: 2.833292,
       lng: -60.677004
-    },
-    zoom: 8
+    }
   });
-
-  const markers = [];
 
   const infoWindow = new google.maps.InfoWindow();
 
@@ -17,14 +17,14 @@ function initMap() {
     Loop through the array 'locations', from ./default_data/locations.js and
     create markers that will show by default, populating the markers array.
   */
-  for (loc of locations) {
+  for (loc of viewModel.locations()) {
     const marker = new google.maps.Marker({
       position: {
-        lat: loc.lat,
-        lng: loc.lng
+        lat: loc.lat(),
+        lng: loc.lng()
       },
       map: map,
-      title: loc.place,
+      title: loc.place(),
       animation: google.maps.Animation.DROP
     })
 
@@ -37,6 +37,14 @@ function initMap() {
     });
   }
   map.fitBounds(bounds);
+
+  const zoomListener = google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
+    if (this.getZoom()) {
+      this.setZoom(17);
+    }
+  });
+
+  setTimeout(function(){google.maps.event.removeListener(zoomListener)}, 2000);
 }
 
 function populateInfoWindow(marker, infoWindow, map) {
@@ -48,4 +56,26 @@ function populateInfoWindow(marker, infoWindow, map) {
       infoWindow.marker = null;
     });
   }
+}
+
+function filterMarkers() {
+  if (!map) {
+    return;
+  }
+
+  for (marker of markers) {
+    if (marker.map) {
+      marker.setMap(null);
+    }
+  }
+
+  for (loc of viewModel.filteredLocations()) {
+    for (marker of markers) {
+      if (marker.title === loc.place()) {
+        marker.setMap(map);
+      }
+    }
+  }
+
+  map.fitBounds(bounds);
 }
