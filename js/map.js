@@ -4,12 +4,13 @@ const center = {
   lat: 2.833292,
   lng: -60.677004
 }
+let infoWindow = null;
 
 function initMap() {
   console.log('LOAD MAP');
   map = new google.maps.Map(document.querySelector('#map'), {center: center});
 
-  const infoWindow = new google.maps.InfoWindow();
+  infoWindow = new google.maps.InfoWindow();
 
   const bounds = new google.maps.LatLngBounds();
 
@@ -33,7 +34,7 @@ function initMap() {
     bounds.extend(marker.position);
 
     marker.addListener('click', () => {
-      populateInfoWindow(marker, infoWindow, map);
+      // populateInfoWindow(marker, infoWindow, map);
       selectMarker(marker.title);
     });
   }
@@ -103,6 +104,9 @@ function selectMarker(location) {
       markers[marker].setAnimation(null)
     }
   }
+
+  // Show infoWindow
+  populateInfoWindow(markers[location], infoWindow, map);
 
   // Select location on list view
   const loc = viewModel.filteredLocations().filter((l)=>{
