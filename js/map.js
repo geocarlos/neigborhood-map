@@ -4,9 +4,10 @@ const center = {
   lat: 2.833292,
   lng: -60.677004
 }
+
 let infoWindow = null;
 
-function initMap() {
+export function initMap() {
   console.log('LOAD MAP');
   map = new google.maps.Map(document.querySelector('#map'), {center: center});
 
@@ -51,7 +52,7 @@ function initMap() {
   }, 2000);
 }
 
-function populateInfoWindow(marker, infoWindow, map) {
+export function populateInfoWindow(marker, infoWindow, map) {
   if (infoWindow.marker !== marker) {
     infoWindow.marker = marker;
     infoWindow.setContent('<div>' + marker.title + '</div>');
@@ -69,7 +70,7 @@ function populateInfoWindow(marker, infoWindow, map) {
   markers map attributes to null and then set back the map only for those
   that match the filtered array provided by Knockout viewModel.
 */
-function filterMarkers() {
+export function filterMarkers() {
   if (!map) {
     return;
   }
@@ -93,7 +94,7 @@ function filterMarkers() {
   }
 }
 
-function selectMarker(location) {
+export function selectMarker(location) {
 
   if (!map) {
     return;
