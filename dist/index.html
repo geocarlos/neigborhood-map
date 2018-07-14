@@ -5,12 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bairro São Francisco Area</title>
-  <!-- <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
-  <!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="/bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="/bower_components/knockout/dist/knockout.js"></script> -->
 </head>
 
 <body>
@@ -27,14 +21,14 @@
       <div class="location-list">
         <ul data-bind="foreach: filteredLocations">
           <!-- The style binding for color cancels the CSS place-name:hover rule; this is the reason for the mouseover and mouseout listeners -->
-          <li class="place-name" data-bind="text: $data.place, style: {color: $data.selected() ? 'lightblue' : '#efefef'}, event: {mouseover: function(d, e){e.target.style.color = 'lightblue'}, mouseout: function(d, e){if(!d.selected()) e.target.style.color = '#efefef'}}, click: function(){$root.selectLocation($data); selectMarker($data.place())}"></li>
+          <li class='place-name' data-bind="text: $data.place, style: {color: $data.selected() ? 'lightblue' : '#efefef'}, event: {mouseover: function(d, e){e.target.style.color = 'lightblue'}, mouseout: function(d, e){if(!d.selected()) e.target.style.color = '#efefef'}}, click: function(){$root.selectLocation($data); selectMarker($data.place())}"></li>
         </ul>
       </div>
     </div>
-    <div class="map-area" id="map-area">
+    <div class="map-area" id='map-area'>
       <nav class="navbar navbar-dark fixed-top bg-dark" data-bind="style: {transform: menuToggle() ? 'translate(0, 0)' : 'translate(320px, 0)'}">
         <div class="navbar-brand">
-          <button data-bind="click: toggleMenu" class="navbar-toggler" id="panel-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <button data-bind='click: toggleMenu' class="navbar-toggler" id="panel-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         </div>
@@ -45,12 +39,8 @@
       <div id="map" data-bind="style: {transform: menuToggle() ? 'translate(0, 0)' : 'translate(320px, 0)'}"></div>
     </div>
   </div>
-  <!-- <script src="js/map.js"></script>
-  <script src="js/default_data/locations.js"></script>
-  <script src="js/models/location.js"></script>
-  <script src="js/view_model/view_model.js"></script> -->
-  <script src="/7297380bd96ece826e0da998eeb828a9.js"></script>
-  <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyBZsbMUm9vj6GQrYRRl9QxMrA-n7V68Dag&callback=initMap"></script>
+  <script src="js/bundle.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyBZsbMUm9vj6GQrYRRl9QxMrA-n7V68Dag&callback=initMap"></script>
 </body>
 
 </html>
