@@ -1,4 +1,4 @@
-const locations = [
+export const locations = [
   {
     place: 'Boa Vista City Hall',
     lat: 2.830462,

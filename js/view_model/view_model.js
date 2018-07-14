@@ -1,5 +1,9 @@
-class ViewModel {
-  constructor() {
+import {locations} from '../default_data/locations';
+import Location from '../models/location';
+// import ko from '/bower_components/knockout/dist/knockout';
+
+export default class ViewModel {
+  constructor(ko) {
 
     this.locations = ko.observableArray([]);
     this.menuToggle = ko.observable(true);
@@ -9,7 +13,7 @@ class ViewModel {
       Turn the simple locations array into an observableArray
     */
     locations.forEach(l => {
-      this.locations.push(new Location(l.place, l.lat, l.lng));
+      this.locations.push(new Location(ko, l.place, l.lat, l.lng));
     })
 
     /**
