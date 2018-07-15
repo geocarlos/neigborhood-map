@@ -19,5 +19,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "knockout": "^3.4.2",
+    "bootstrap": "^4.1.2"
+  }
 }

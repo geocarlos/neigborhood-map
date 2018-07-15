@@ -52,6 +52,8 @@ export function initMap() {
   }, 2000);
 }
 
+window.initMap  = initMap;
+
 export function populateInfoWindow(marker, infoWindow, map) {
   if (infoWindow.marker !== marker) {
     infoWindow.marker = marker;
