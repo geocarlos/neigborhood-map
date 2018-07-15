@@ -1,3 +1,12 @@
+/**
+
+  This file contains functions to handle data from Google Maps.
+  Some functions are exported so that the viewModel may access them in order
+  to interact with the map.
+
+  */
+
+
 const markers = {};
 let map = null;
 const center = {
@@ -17,8 +26,7 @@ export function initMap() {
 
   /**
     Loop through the array 'locations', from ./default_data/locations.js and
-    create markers that will show by default, populating the markers array.
-  */
+    create markers that will show by default, populating the markers array. */
   for (let loc of viewModel.locations()) {
     const marker = new google.maps.Marker({
       position: {
@@ -35,7 +43,7 @@ export function initMap() {
     bounds.extend(marker.position);
 
     marker.addListener('click', () => {
-      // populateInfoWindow(marker, infoWindow, map);
+      populateInfoWindow(marker, infoWindow, map);
       selectMarker(marker.title);
     });
   }
@@ -52,9 +60,7 @@ export function initMap() {
   }, 2000);
 }
 
-window.initMap  = initMap;
-
-export function populateInfoWindow(marker, infoWindow, map) {
+function populateInfoWindow(marker, infoWindow, map) {
   if (infoWindow.marker !== marker) {
     infoWindow.marker = marker;
     infoWindow.setContent('<div>' + marker.title + '</div>');
@@ -65,13 +71,11 @@ export function populateInfoWindow(marker, infoWindow, map) {
   }
 }
 
-
 /**
   This function is designed in a way that when the users types in the input
   field, markers won't be blinking, what would happen if I turned all the
   markers map attributes to null and then set back the map only for those
-  that match the filtered array provided by Knockout viewModel.
-*/
+  that match the filtered array provided by Knockout viewModel. */
 export function filterMarkers() {
   if (!map) {
     return;
@@ -83,7 +87,7 @@ export function filterMarkers() {
   for (let loc of locations) {
     locs.push(loc.place());
     // Set map only if it is not set.
-    if(!markers[loc.place()].map){
+    if (!markers[loc.place()].map) {
       markers[loc.place()].setMap(map);
     }
   }
@@ -112,13 +116,13 @@ export function selectMarker(location) {
   populateInfoWindow(markers[location], infoWindow, map);
 
   // Select location on list view
-  const loc = viewModel.filteredLocations().filter((l)=>{
+  const loc = viewModel.filteredLocations().filter((l) => {
     return l.place() === location;
   })[0];
   viewModel.selectLocation(loc);
 
   markers[location].setAnimation(google.maps.Animation.BOUNCE);
-  setTimeout(()=>{
+  setTimeout(() => {
     markers[location].setAnimation(null);
   }, 1500)
 }
