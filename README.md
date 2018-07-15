@@ -4,6 +4,8 @@ This is the fourth project for the Udacity Full Stack Web Developer Nanodegree.
 
 It is a web application developed with KnockoutJS and the Google API that shows a map of my neighborhood with information about some locations.
 
+[View the application in production](https://geocarlos.github.io/neigborhood-map/)
+
 ## How to run the application
 
 Node and NPM or Yarn are required to run this application.
