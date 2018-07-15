@@ -16,7 +16,7 @@
       </div>
       <div class="search">
         <span>Enter text to filter places: </span>
-        <input id="places-search" class="form-control mr-sm-2 search-box" type="text" data-bind="textInput: locationFilter, event: {keyup: function(){filterMarkers();}}" placeholder="Ex: restaurants">
+        <input id="places-search" class="form-control mr-sm-2 search-box" type="text" data-bind="textInput: locationFilter, event: {keyup: function(){$root._map.filterMarkers();}}" placeholder="Ex: restaurants">
       </div>
       <div class="location-list">
         <ul data-bind="foreach: filteredLocations">

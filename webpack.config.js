@@ -11,11 +11,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js)$/,
         exclude: /node_modules|index.html/,
         use: ['babel-loader']
       }, {
-        test: /\.(js|jsx)$/,
+        test: /\.(js)$/,
         exclude: /node_modules|index.html/,
         use: ['eslint-loader']
       }, {

@@ -11,4 +11,3 @@ function _init() {
 }
 
 _init()
-console.log("Webpack setup!");
