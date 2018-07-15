@@ -46,9 +46,9 @@ export default class ViewModel {
     window.initMap = this._map.initMap;
     // Send this ViewModel to the global scope
     window.viewModel = this;
-    const url = 'https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyBZsbMUm9vj6GQrYRRl9QxMrA-n7V68Dag&callback=initMap';
+    // Create a script element for Google Maps Api
     const mapTag = document.createElement('script');
-    mapTag.src = url;
+    mapTag.src = 'https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyBZsbMUm9vj6GQrYRRl9QxMrA-n7V68Dag&callback=initMap';
     mapTag.async = true;
     mapTag.defer = true;
     document.body.appendChild(mapTag)
