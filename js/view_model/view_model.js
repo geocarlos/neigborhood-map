@@ -1,6 +1,7 @@
 import {locations} from '../default_data/locations';
 import Location from '../models/location';
 import * as _map from '../google_api/map';
+import {API_KEY} from '../google_api/API_KEY';
 
 export default class ViewModel {
 
@@ -48,7 +49,7 @@ export default class ViewModel {
     window.viewModel = this;
     // Create a script element for Google Maps Api
     const mapTag = document.createElement('script');
-    mapTag.src = 'https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyBZsbMUm9vj6GQrYRRl9QxMrA-n7V68Dag&callback=initMap';
+    mapTag.src = `https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=${API_KEY}&callback=initMap`;
     mapTag.async = true;
     mapTag.defer = true;
     document.body.appendChild(mapTag)
