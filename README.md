@@ -16,7 +16,7 @@ Once you have downloaded or cloned the repository, you will need a Google Maps A
 
 `export const API_KEY = 'YOUR_API_KEY';`, replacing 'YOUR_API_KEY' with the key you will get from Google. Click [here](https://developers.google.com/maps/documentation/javascript/get-api-key) if you do not know how to get a Google API Key.
 
-from your terminal or cmd/PowerShell, run the following commands:
+Then, once you have your API key, from your terminal or cmd/PowerShell, run the following commands:
 
 `npm install` - this will install the Node modules required by the application.
 
