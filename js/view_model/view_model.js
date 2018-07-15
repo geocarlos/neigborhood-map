@@ -1,6 +1,6 @@
 import {locations} from '../default_data/locations';
 import Location from '../models/location';
-import * as _map from '../../google_api/map';
+import * as _map from '../google_api/map';
 
 export default class ViewModel {
 
