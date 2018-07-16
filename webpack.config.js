@@ -1,3 +1,8 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+// Extract CSS
+const extractCSS = new ExtractTextPlugin('styles.min.css');
+
 module.exports = {
   entry: ['./js/app.js'],
   output: {
@@ -15,16 +20,17 @@ module.exports = {
         exclude: /node_modules|index.html/,
         use: ['babel-loader']
       }, {
+        test: /\.css$/,
+        use: extractCSS.extract(['css-loader', 'postcss-loader'])
+      }, {
         test: /\.(js)$/,
         exclude: /node_modules|index.html/,
         use: ['eslint-loader']
-      }, {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
       }
     ]
   },
+  plugins: [extractCSS],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js']
   }
 }
