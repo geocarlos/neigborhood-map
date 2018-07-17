@@ -122,3 +122,30 @@ hr {
   cursor: pointer;
   color: lightblue;
 }
+
+.favorite{
+  padding-left: .1em;
+  display: none;
+}
+
+.favorite img {
+  width: 20px;
+  height: 20px;
+}
+
+.favorite img:hover {
+  cursor: pointer;
+}
+
+.remove-favorite{
+  display: none;
+}
+
+.remove-favorite img {
+  width: 20px;
+  height: 20px;
+}
+
+.remove-favorite img:hover {
+  cursor: pointer;
+}

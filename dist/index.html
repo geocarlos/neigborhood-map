@@ -18,7 +18,15 @@
       <div class="location-list">
         <ul class="list-view" data-bind="foreach: filteredLocations">
           <!-- The style binding for color cancels the CSS place-name:hover rule; this is the reason for the mouseover and mouseout listeners -->
-          <li class='place-name' data-bind="text: $data.place, style: {color: $data.selected() ? 'lightblue' : '#efefef'}, event: {mouseover: function(d, e){e.target.style.color = 'lightblue'}, mouseout: function(d, e){if(!d.selected()) e.target.style.color = '#efefef'}}, click: function(){$root.selectLocation($data); $root._map.selectMarker($data.place())}"></li>
+          <li data-bind="event: {mouseover: function(d, e){e.target.style.color = 'lightblue'; $root.showFavOffer(d)}, mouseout: function(d, e){if(!d.selected()) e.target.style.color = '#efefef'; $root.hideFavOffer(d)}}, click: function(){$root.selectLocation($data); $root._map.selectMarker($data.place())}">
+            <span class='place-name' data-bind="text: $data.place, style: {color: $data.selected() ? 'lightblue' : '#efefef'}"></span>
+            <span class="favorite" data-bind='click: function(){$root.addToFavorites($data.id);}, style: {display: ($data.isHovering() || $root.favorites()[$data.id]) ? "inline" : "none"}'>
+              <img src="assets/img/favorite_icon.svg" alt="favorite icon">
+            </span>
+            <span class="remove-favorite" data-bind='click: function(){$root.removeFromFavorites($data.id);}, style: {display: ($data.isHovering() && $root.favorites()[$data.id]) ? "inline" : "none"}'>
+              <img src="assets/img/remove_fav.svg" alt="remove favorite icon">
+            </span>
+          </li>
         </ul>
       </div>
     </div>

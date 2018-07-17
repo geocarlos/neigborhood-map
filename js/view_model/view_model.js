@@ -1,15 +1,17 @@
 import Location from '../models/location';
 import * as _map from '../google_api/map';
 import {API_KEY} from '../google_api/API_KEY';
+import {addFavorite, removeFavorite} from '../foursquare_api/locations';
 
 export default class ViewModel {
 
-  constructor(ko, locations) {
+  constructor(ko, locations, favorites) {
 
     this.locations = ko.observableArray([]);
     this.menuToggle = ko.observable(false);
     this.locationFilter = ko.observable('');
     this._map = _map;
+    this.favorites = ko.observable(favorites)
 
     /**
       Turn the simple locations array into an observableArray */
@@ -17,6 +19,7 @@ export default class ViewModel {
       this.locations.push(
         new Location(
           ko,
+          l.venue.id,
           l.venue.name,
           l.venue.location.lat,
           l.venue.location.lng,
@@ -57,6 +60,7 @@ export default class ViewModel {
       loc.selected(false);
     }
     location.selected(true);
+    console.log(this.favorites())
   }
 
   /**
@@ -78,5 +82,28 @@ export default class ViewModel {
     mapTag.async = true;
     mapTag.defer = true;
     document.body.appendChild(mapTag)
+  }
+
+  addToFavorites(id){
+    this.favorites({...this.favorites(), [id]: true});
+    // Persist in local storage
+    addFavorite(id);
+  }
+
+  removeFromFavorites(id){
+    delete this.favorites({...this.favorites(), [id]: null});
+    // Delete from localStorage
+    removeFavorite(id)
+  }
+
+  showFavOffer(location){
+    location.isHovering(true)
+  }
+
+  hideFavOffer(location){
+    if(this.favorites[location]){
+      return;
+    }
+    location.isHovering(false)
   }
 }

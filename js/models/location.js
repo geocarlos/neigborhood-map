@@ -1,5 +1,6 @@
 export default class Location {
-  constructor(ko, place, lat, lng, icon, category, address){
+  constructor(ko, id, place, lat, lng, icon, category, address){
+    this.id = id;
     this.place = ko.observable(place);
     this.lat = ko.observable(lat);
     this.lng = ko.observable(lng);
@@ -7,5 +8,7 @@ export default class Location {
     this.icon = ko.observable(icon);
     this.category = ko.observable(category);
     this.address = ko.observable(address)
+    // This to decide on showing "add favorite"
+    this.isHovering = ko.observable(false)
   }
 }
