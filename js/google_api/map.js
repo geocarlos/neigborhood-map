@@ -10,7 +10,7 @@
  Global variables */
 const markers = {};
 let map = null;
-const center = {
+export const center = {
   lat: 2.833292,
   lng: -60.677004
 }
