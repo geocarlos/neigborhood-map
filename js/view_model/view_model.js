@@ -13,9 +13,23 @@ export default class ViewModel {
 
     /**
       Turn the simple locations array into an observableArray */
-    locations.forEach(l => {
-      this.locations.push(new Location(ko, l.venue.name, l.venue.location.lat, l.venue.location.lng));
+    locations.map(l => {
+      this.locations.push(
+        new Location(
+          ko,
+          l.venue.name,
+          l.venue.location.lat,
+          l.venue.location.lng,
+          l.venue.categories[0].icon,
+          l.venue.categories[0].shortName,
+          l.venue.location.formattedAddress
+        ));
     })
+
+    setTimeout(()=>{
+      console.log("Venue: ", locations[0].venue);
+      console.log("Categories", locations[0].venue.categories);
+    }, 2000)
 
     /**
       Filter array based on the textInput */

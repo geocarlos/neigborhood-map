@@ -6,13 +6,15 @@
 
   */
 
-
+/**
+ Global variables */
 const markers = {};
 let map = null;
 const center = {
   lat: 2.833292,
   lng: -60.677004
 }
+let infoViewContent = '';
 
 let infoWindow = null;
 
@@ -63,7 +65,7 @@ export function initMap() {
 function populateInfoWindow(marker, infoWindow, map) {
   if (infoWindow.marker !== marker) {
     infoWindow.marker = marker;
-    infoWindow.setContent('<div>' + marker.title + '</div>');
+    infoWindow.setContent(infoViewContent);
     infoWindow.open(map, marker);
     infoWindow.addListener('closeclick', () => {
       infoWindow.marker = null;
@@ -112,17 +114,30 @@ export function selectMarker(location) {
     }
   }
 
-  // Show infoWindow
-  populateInfoWindow(markers[location], infoWindow, map);
-
   // Select location on list view
   const loc = viewModel.filteredLocations().filter((l) => {
     return l.place() === location;
   })[0];
   viewModel.selectLocation(loc);
 
+  // Show infoWindow
+  setInfoWindowContent(loc);
+  populateInfoWindow(markers[location], infoWindow, map);
+
   markers[location].setAnimation(google.maps.Animation.BOUNCE);
   setTimeout(() => {
     markers[location].setAnimation(null);
   }, 1500)
+}
+
+function setInfoWindowContent(location){
+  infoViewContent = `
+    <div style="display: inline-flex; text-align: center" title="${location.category()}">
+      <div style="background-color: #9e9eae; text-align: center; border-radius: .5em; height: 80%">
+        <img src="${location.icon().prefix}32${location.icon().suffix}" alt="${location.category()}" />
+      </div>
+      <h6 style="padding: .5em ">${location.place()}</h6>
+    </div>
+    <div style=" max-width: 300px">${location.address()}</div>
+  `
 }
