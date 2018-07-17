@@ -14,11 +14,17 @@ You may download the application files or clone this repository with Git. Unless
 
 `git clone https://github.com/geocarlos/neigborhood-map.git`
 
-Once you have downloaded or cloned the repository, you will need a Google Maps API key. Once you have your API key, create a file named API_KEY.js in the js/google_api directory with the following content:
+Once you have downloaded or cloned the repository, you will need a Google Maps API key, for the map, and Foursquare credentials for location information. Once you have your API key, create a file named API_KEY.js in the js/google_api directory with the following content:
 
 `export const API_KEY = 'YOUR_API_KEY';`, replacing 'YOUR_API_KEY' with the key you will get from Google. Click [here](https://developers.google.com/maps/documentation/javascript/get-api-key) if you do not know how to get a Google API Key.
 
-Then, once you have your API key, from your terminal or cmd/PowerShell, run the following commands:
+For [Foursquare API](https://developer.foursquare.com/), you will have to create an account, if you do not have one already, to obtain your credentials, which are Client ID and Client Secret. Once you have them, create a file named CREDENTIALS.jS in the folder js/foursquare_api with this content:
+
+`export const CLIENT_ID = '[YOUR_CLIENT_ID]';`
+
+`export const CLIENT_SECRET = '[YOUR_CLIENT_SECRET]';`
+
+Then, once you have your API key for Google Maps API and your credentials for Foursquare API, from your terminal or cmd/PowerShell, run the following commands:
 
 `npm install` - this will install the Node modules required by the application.
 
