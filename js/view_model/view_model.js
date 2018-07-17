@@ -35,7 +35,11 @@ export default class ViewModel {
       Filter array based on the textInput */
     this.filteredLocations = ko.computed(()=>{
       return this.locations().filter((l)=>{
-        return l.place().toLowerCase().indexOf(this.locationFilter().toLowerCase()) >= 0;
+        return (
+          l.place().toLowerCase().includes(this.locationFilter().toLowerCase()) ||
+          l.category().toLowerCase().includes(this.locationFilter().toLowerCase()) ||
+          this.getCatInEnglish(l.icon().prefix).toLowerCase().includes(this.locationFilter().toLowerCase())
+        );
       });
     }, this);
   }
@@ -53,6 +57,14 @@ export default class ViewModel {
       loc.selected(false);
     }
     location.selected(true);
+  }
+
+  /**
+   This would allow search in English in a location where categories are in
+   another language. In this case, this would allow somebody who cannot write
+   in Portuguese perform searches by cateogory in English. */
+  getCatInEnglish(iconPrefix){
+    return iconPrefix.substring(39).substring(iconPrefix.indexOf('/') - 1);
   }
 
   getMap(){

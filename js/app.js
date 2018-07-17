@@ -8,7 +8,7 @@ let locations = [];
 
 getInitialLocations((data)=>{
   return new Promise((res)=>{
-    locations = data.response.groups[0].items;
+    locations = data;
     if(locations) res()
   })
   .then(()=>{
