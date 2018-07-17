@@ -10,21 +10,17 @@ html, body {
   padding-left: 0 !important;
 }
 
-input {
-  font-size: 12px;
-}
-
-.navbar-toggler{
+.navbar-toggler {
   margin-left: 0.5em;
 }
 
-nav{
+nav {
   float: right !important;
   transform: translate(320px, 0);
   transition: transform .5s ease;
 }
 
-ul{
+ul {
   list-style: none;
   padding: 0px;
 }
@@ -71,13 +67,45 @@ hr {
   position: absolute;
   transform: translate(-330px, 0);
   transition: transform .5s ease;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar-brand{
+  display: inline-flex !important;
+}
+
+.search{
+  display: inline-flex;
+  color: #efefef;
+  font-size: 1.1em;
+  padding-left: 1em;
+  padding-right: 0 !important;
+  border: solid;
+  border-width: thin;
+  border-radius: .3em;
+  margin-right: 0;
+  margin-left: 1em;
+  width:300%;
+}
+
+.search label {
+  padding: 0.3em 1em 0 0;
 }
 
 .search-box {
-  width: 75%;
+  border-top-right-radius: .3em;
+  border-bottom-right-radius: .3em;
+  font-size: 1em;
+  width: 100%;
+  padding-left: .5em;
+
 }
 
-.place-name:hover{
+.place-name:hover {
   cursor: pointer;
   color: lightblue;
 }

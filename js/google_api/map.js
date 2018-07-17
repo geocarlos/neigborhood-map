@@ -51,7 +51,7 @@ export function initMap() {
 
   const zoomListener = google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
     if (this.getZoom()) {
-      this.setZoom(17);
+      this.setZoom(16);
     }
   });
 
