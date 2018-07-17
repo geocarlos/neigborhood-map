@@ -1,21 +1,20 @@
-import {locations} from '../default_data/locations';
 import Location from '../models/location';
 import * as _map from '../google_api/map';
 import {API_KEY} from '../google_api/API_KEY';
 
 export default class ViewModel {
 
-  constructor(ko) {
+  constructor(ko, locations) {
 
     this.locations = ko.observableArray([]);
-    this.menuToggle = ko.observable(true);
+    this.menuToggle = ko.observable(false);
     this.locationFilter = ko.observable('');
     this._map = _map;
 
     /**
       Turn the simple locations array into an observableArray */
     locations.forEach(l => {
-      this.locations.push(new Location(ko, l.place, l.lat, l.lng));
+      this.locations.push(new Location(ko, l.venue.name, l.venue.location.lat, l.venue.location.lng));
     })
 
     /**

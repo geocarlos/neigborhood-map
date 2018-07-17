@@ -2,12 +2,22 @@ import '../css/styles.css';
 import '../bower_components/bootstrap/dist/css/bootstrap.min.css';
 import ko from '../bower_components/knockout/dist/knockout';
 import ViewModel from './view_model/view_model';
+import {getInitialLocations} from './foursquare_api/locations';
 
-const viewModel = new ViewModel(ko);
+let locations = [];
 
-function _init() {
+getInitialLocations((data)=>{
+  return new Promise((res)=>{
+    locations = data.response.groups[0].items;
+    if(locations) res()
+  })
+  .then(()=>{
+    const viewModel = new ViewModel(ko, locations);
+    _init(viewModel)
+  })
+})
+
+function _init(viewModel) {
   ko.applyBindings(viewModel);
   viewModel.getMap();
 }
-
-_init()
