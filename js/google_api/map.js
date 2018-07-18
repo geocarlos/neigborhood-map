@@ -90,7 +90,7 @@ export function initMap() {
   highlightedIcon = makeMarkerIcon('92ff24');
 
   /**
-    Loop through the array 'locations', from ./default_data/locations.js and
+    Loop through the array 'locations', from Foursquare API and
     create markers that will show by default, populating the markers array. */
   for (let loc of viewModel.locations()) {
     const marker = new google.maps.Marker({
