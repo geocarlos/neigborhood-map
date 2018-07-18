@@ -1,5 +1,4 @@
 node_modules
 bower_components
 .cache
-js/google_api/API_KEY.js
-js/foursquare_api/CREDENTIALS.js
+js
