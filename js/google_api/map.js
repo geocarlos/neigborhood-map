@@ -109,8 +109,8 @@ export function initMap() {
     bounds.extend(marker.position);
 
     marker.addListener('click', function() {
-      populateInfoWindow(marker, infoWindow, map);
       selectMarker(this.title);
+      populateInfoWindow(marker, infoWindow, map);
     });
 
     marker.addListener('mouseover', function() {
