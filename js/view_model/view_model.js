@@ -8,7 +8,7 @@ export default class ViewModel {
   constructor(ko, locations, favorites) {
 
     this.locations = ko.observableArray([]);
-    this.menuToggle = ko.observable(false);
+    this.menuToggle = ko.observable(true);
     this.locationFilter = ko.observable('');
     this._map = _map;
     this.favorites = ko.observable(favorites)

@@ -1,3 +1,7 @@
+/**
+  This data was used for tests, before setting up the Foursquare API. It is not
+  used anymore; now the data is fetched from Foursquare API and placed on the
+  map provided by the Google Maps API */
 export const locations = [
   {
     place: "Recanto da Peixada",
