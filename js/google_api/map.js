@@ -221,7 +221,7 @@ function setInfoWindowContent(location) {
   I have adapted this function from one presetend in one of the classes of the Udacity FSND. */
 function makeMarkerIcon(markerColor) {
   const markerImage = new google.maps.MarkerImage(
-    `http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|${markerColor}|40|_|%E2%80%A2`,
+    `https://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|${markerColor}|40|_|%E2%80%A2`,
     new google.maps.Size(25, 40),
     new google.maps.Point(0, 0),
     new google.maps.Point(15, 40),
