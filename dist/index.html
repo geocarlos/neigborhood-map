@@ -22,6 +22,7 @@
             <span class='place-name' data-bind="text: $data.place, style: {color: $data.selected() ? 'lightblue' : '#efefef'}"></span>
             <span class="favorite" data-bind='click: function(){$root.addToFavorites($data.id);}, style: {display: ($data.isHovering() || $root.favorites()[$data.id]) ? "inline" : "none"}'>
               <img src="assets/img/favorite_icon.svg" alt="favorite icon">
+              <span data-bind="style: {display: ($root.favorites()[$data.id]) ? 'none' : 'inline'}"><strong>+</strong></span>
             </span>
             <span class="remove-favorite" data-bind='click: function(){$root.removeFromFavorites($data.id);}, style: {display: ($data.isHovering() && $root.favorites()[$data.id]) ? "inline" : "none"}'>
               <img src="assets/img/remove_fav.svg" alt="remove favorite icon">

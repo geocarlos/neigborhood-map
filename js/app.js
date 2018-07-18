@@ -13,7 +13,6 @@ getInitialLocations((data)=>{
     if(locations) res()
   })
   .then(()=>{
-    console.log("Favorites: ",favorites);
     const viewModel = new ViewModel(ko, locations, favorites);
     _init(viewModel)
   })

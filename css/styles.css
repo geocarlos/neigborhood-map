@@ -40,10 +40,6 @@ ul {
 
 /* Map Area */
 
-#hide-listings, #show-listings {
-  width: 48%;
-}
-
 hr {
   background: #D0D7D9;
   height: 1px;
@@ -59,11 +55,6 @@ hr {
   right: 0px;
   transform: translate(320px, 0);
   transition: transform .5s ease;
-}
-
-#pano {
-  width: 200px;
-  height: 200px;
 }
 
 /* Left Panel Area */
@@ -148,4 +139,15 @@ hr {
 
 .remove-favorite img:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px){
+  .side-panel {
+    line-height: 25px;
+    padding: .5em;
+  }
+
+  .search label {
+    display: none;
+  }
 }

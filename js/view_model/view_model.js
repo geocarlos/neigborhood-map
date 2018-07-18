@@ -29,11 +29,6 @@ export default class ViewModel {
         ));
     })
 
-    setTimeout(()=>{
-      console.log("Venue: ", locations[0].venue);
-      console.log("Categories", locations[0].venue.categories);
-    }, 2000)
-
     /**
       Filter array based on the textInput */
     this.filteredLocations = ko.computed(()=>{
@@ -60,7 +55,6 @@ export default class ViewModel {
       loc.selected(false);
     }
     location.selected(true);
-    console.log(this.favorites())
   }
 
   /**
